@@ -1,0 +1,524 @@
+/* =======================================
+   AI VIDEO ASSISTANT
+   Premium CSS
+=======================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    font-family:'Poppins',sans-serif;
+}
+
+/* Main Background */
+
+.stApp{
+
+    background:linear-gradient(
+    135deg,
+    #0F172A,
+    #111827,
+    #1E293B,
+    #0B1120
+    );
+
+    background-size:400% 400%;
+
+    animation:gradientBG 18s ease infinite;
+
+    color:white;
+
+}
+
+
+@keyframes gradientBG{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+
+/* Hide Streamlit Branding */
+
+#MainMenu{
+
+visibility:hidden;
+
+}
+
+footer{
+
+visibility:hidden;
+
+}
+
+header{
+
+visibility:hidden;
+
+}
+
+
+/* Sidebar */
+
+[data-testid="stSidebar"]{
+
+background:rgba(15,23,42,.70);
+
+backdrop-filter:blur(18px);
+
+border-right:1px solid rgba(255,255,255,.08);
+
+}
+
+
+/* Cards */
+
+div[data-testid="stVerticalBlock"]>div{
+
+background:rgba(255,255,255,.04);
+
+border-radius:18px;
+
+padding:20px;
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:
+
+0 8px 25px rgba(0,0,0,.35);
+
+transition:.35s;
+
+}
+
+
+div[data-testid="stVerticalBlock"]>div:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 15px 40px rgba(0,255,255,.18);
+
+}
+
+
+/* Buttons */
+
+.stButton>button{
+
+background:linear-gradient(
+
+90deg,
+
+#00D4FF,
+
+#6366F1,
+
+#9333EA
+
+);
+
+color:white;
+
+font-weight:700;
+
+border:none;
+
+border-radius:14px;
+
+padding:.8rem;
+
+font-size:18px;
+
+transition:.35s;
+
+box-shadow:
+
+0 0 20px rgba(99,102,241,.45);
+
+}
+
+
+.stButton>button:hover{
+
+transform:scale(1.03);
+
+box-shadow:
+
+0 0 40px rgba(0,212,255,.8);
+
+}
+
+
+/* Download Button */
+
+.stDownloadButton button{
+
+background:#111827;
+
+border-radius:14px;
+
+color:white;
+
+border:1px solid #4F46E5;
+
+}
+
+
+/* Input Boxes */
+
+.stTextInput input,
+
+.stTextArea textarea{
+
+background:rgba(255,255,255,.05);
+
+color:white;
+
+border-radius:14px;
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+
+/* Selectbox */
+
+.stSelectbox{
+
+border-radius:14px;
+
+}
+
+
+/* File Uploader */
+
+[data-testid="stFileUploader"]{
+
+background:rgba(255,255,255,.05);
+
+padding:20px;
+
+border-radius:18px;
+
+border:2px dashed #6366F1;
+
+}
+
+
+/* Metrics */
+
+div[data-testid="metric-container"]{
+
+background:rgba(255,255,255,.05);
+
+border-radius:20px;
+
+padding:15px;
+
+border:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.25);
+
+}
+
+
+/* Tabs */
+
+button[data-baseweb="tab"]{
+
+font-size:16px;
+
+font-weight:600;
+
+color:white;
+
+background:transparent;
+
+}
+
+
+button[data-baseweb="tab"][aria-selected="true"]{
+
+background:linear-gradient(
+
+90deg,
+
+#3B82F6,
+
+#8B5CF6
+
+);
+
+border-radius:10px;
+
+}
+
+
+/* Progress */
+
+.stProgress>div>div{
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#00D4FF,
+
+#7C3AED
+
+);
+
+}
+
+
+/* Expander */
+
+.streamlit-expanderHeader{
+
+font-size:18px;
+
+font-weight:600;
+
+}
+
+
+/* Chat */
+
+[data-testid="stChatMessage"]{
+
+background:rgba(255,255,255,.05);
+
+border-radius:18px;
+
+padding:15px;
+
+border:1px solid rgba(255,255,255,.08);
+
+margin-bottom:10px;
+
+}
+
+
+/* Success */
+
+.stSuccess{
+
+background:rgba(16,185,129,.15);
+
+border-radius:15px;
+
+}
+
+
+/* Warning */
+
+.stWarning{
+
+border-radius:15px;
+
+}
+
+
+/* Info */
+
+.stInfo{
+
+border-radius:15px;
+
+}
+
+
+/* Spinner */
+
+.stSpinner{
+
+color:#00D4FF;
+
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111827;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#4F46E5;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#06B6D4;
+
+}
+
+
+/* Headings */
+
+h1{
+
+font-size:50px;
+
+font-weight:700;
+
+background:linear-gradient(
+
+90deg,
+
+#00D4FF,
+
+#7C3AED,
+
+#F472B6
+
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+
+h2{
+
+color:#FFFFFF;
+
+font-weight:600;
+
+}
+
+
+h3{
+
+color:#D1D5DB;
+
+}
+
+
+/* Divider */
+
+hr{
+
+border:0;
+
+height:1px;
+
+background:rgba(255,255,255,.08);
+
+}
+
+
+/* Floating Animation */
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-5px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+
+img{
+
+animation:float 5s ease-in-out infinite;
+
+}
+
+
+/* Fade */
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0px);
+
+}
+
+}
+
+
+section.main>div{
+
+animation:fadeIn .7s;
+
+}
+
+
+/* Glow Text */
+
+.glow{
+
+text-shadow:
+
+0 0 10px cyan,
+
+0 0 20px cyan,
+
+0 0 30px blue;
+
+}
+
+
+/* Footer */
+
+.footer{
+
+text-align:center;
+
+padding:20px;
+
+color:#9CA3AF;
+
+}

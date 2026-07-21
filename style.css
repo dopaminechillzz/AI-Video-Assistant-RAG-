@@ -1,524 +1,915 @@
-/* =======================================
-   AI VIDEO ASSISTANT
-   Premium CSS
-=======================================*/
+/* =====================================================
+   YOUTUBE-INSPIRED DARK THEME — AI Video Assistant
+   Dark theme (#0f0f0f), red accents (#FF0000),
+   clean cards, YouTube-style search bar
+   ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 
-*{
-    font-family:'Poppins',sans-serif;
+/* ── Reset & Base ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Main Background */
-
-.stApp{
-
-    background:linear-gradient(
-    135deg,
-    #0F172A,
-    #111827,
-    #1E293B,
-    #0B1120
-    );
-
-    background-size:400% 400%;
-
-    animation:gradientBG 18s ease infinite;
-
-    color:white;
-
+html, body, .stApp {
+    font-family: 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f0f0f !important;
+    color: #ffffff;
+    min-height: 100vh;
 }
 
-
-@keyframes gradientBG{
-
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-
+.stApp {
+    background: #0f0f0f !important;
 }
 
-
-/* Hide Streamlit Branding */
-
-#MainMenu{
-
-visibility:hidden;
-
+/* ── Hide Streamlit Branding ── */
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; display: none; }
+header { visibility: hidden; display: none; }
+.stDeployButton { display: none !important; }
+.appview-container .main .block-container {
+    padding-top: 0 !important;
+    padding-bottom: 2rem;
+    max-width: 1200px;
 }
 
-footer{
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f0f0f; }
+::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #888; }
 
-visibility:hidden;
-
+/* =====================================================
+   YOUTUBE HEADER
+   ===================================================== */
+.yt-header {
+    background: #0f0f0f;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    margin: 0;
 }
 
-header{
-
-visibility:hidden;
-
+.yt-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-
-/* Sidebar */
-
-[data-testid="stSidebar"]{
-
-background:rgba(15,23,42,.70);
-
-backdrop-filter:blur(18px);
-
-border-right:1px solid rgba(255,255,255,.08);
-
+.yt-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-
-/* Cards */
-
-div[data-testid="stVerticalBlock"]>div{
-
-background:rgba(255,255,255,.04);
-
-border-radius:18px;
-
-padding:20px;
-
-backdrop-filter:blur(20px);
-
-border:1px solid rgba(255,255,255,.08);
-
-box-shadow:
-
-0 8px 25px rgba(0,0,0,.35);
-
-transition:.35s;
-
+.yt-logo-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
 }
 
-
-div[data-testid="stVerticalBlock"]>div:hover{
-
-transform:translateY(-4px);
-
-box-shadow:
-
-0 15px 40px rgba(0,255,255,.18);
-
+.yt-logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
 }
 
-
-/* Buttons */
-
-.stButton>button{
-
-background:linear-gradient(
-
-90deg,
-
-#00D4FF,
-
-#6366F1,
-
-#9333EA
-
-);
-
-color:white;
-
-font-weight:700;
-
-border:none;
-
-border-radius:14px;
-
-padding:.8rem;
-
-font-size:18px;
-
-transition:.35s;
-
-box-shadow:
-
-0 0 20px rgba(99,102,241,.45);
-
+.yt-logo-text span {
+    color: #aaaaaa;
+    font-weight: 400;
 }
 
-
-.stButton>button:hover{
-
-transform:scale(1.03);
-
-box-shadow:
-
-0 0 40px rgba(0,212,255,.8);
-
+/* Subtle logo hover */
+.yt-logo:hover .yt-logo-icon {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
 }
 
-
-/* Download Button */
-
-.stDownloadButton button{
-
-background:#111827;
-
-border-radius:14px;
-
-color:white;
-
-border:1px solid #4F46E5;
-
+.yt-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-
-/* Input Boxes */
-
-.stTextInput input,
-
-.stTextArea textarea{
-
-background:rgba(255,255,255,.05);
-
-color:white;
-
-border-radius:14px;
-
-border:1px solid rgba(255,255,255,.08);
-
+.yt-nav-link {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
 }
 
-
-/* Selectbox */
-
-.stSelectbox{
-
-border-radius:14px;
-
+.yt-nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-
-/* File Uploader */
-
-[data-testid="stFileUploader"]{
-
-background:rgba(255,255,255,.05);
-
-padding:20px;
-
-border-radius:18px;
-
-border:2px dashed #6366F1;
-
+/* =====================================================
+   HERO / WELCOME AREA
+   ===================================================== */
+.welcome-section {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-
-/* Metrics */
-
-div[data-testid="metric-container"]{
-
-background:rgba(255,255,255,.05);
-
-border-radius:20px;
-
-padding:15px;
-
-border:1px solid rgba(255,255,255,.08);
-
-text-align:center;
-
-box-shadow:
-
-0 10px 25px rgba(0,0,0,.25);
-
+.welcome-section .yt-logo-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
 }
 
-
-/* Tabs */
-
-button[data-baseweb="tab"]{
-
-font-size:16px;
-
-font-weight:600;
-
-color:white;
-
-background:transparent;
-
+.welcome-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
 }
 
-
-button[data-baseweb="tab"][aria-selected="true"]{
-
-background:linear-gradient(
-
-90deg,
-
-#3B82F6,
-
-#8B5CF6
-
-);
-
-border-radius:10px;
-
+.welcome-subtitle {
+    font-size: 16px;
+    color: #aaaaaa;
+    margin-bottom: 0;
+    line-height: 1.5;
 }
 
+/* =====================================================
+   SEARCH BAR — YouTube Style
+   URL input + Analyze button side by side
+   ===================================================== */
 
-/* Progress */
-
-.stProgress>div>div{
-
-background:
-
-linear-gradient(
-
-90deg,
-
-#00D4FF,
-
-#7C3AED
-
-);
-
+/* The URL text input — first column inside search area */
+input[placeholder="Paste YouTube link here..."] {
+    background: #1a1a1a !important;
+    border: 1px solid #303030 !important;
+    border-right: none !important;
+    border-radius: 24px 0 0 24px !important;
+    padding: 0 20px !important;
+    height: 48px !important;
+    font-size: 16px !important;
+    color: #ffffff !important;
+    outline: none !important;
+    box-shadow: none !important;
+    caret-color: #ffffff;
+    transition: border 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
+input[placeholder="Paste YouTube link here..."]:focus {
+    border-color: #1c62b9 !important;
+    border-right: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+input[placeholder="Paste YouTube link here..."]::placeholder {
+    color: #717171;
+    font-size: 16px;
+}
+
+/* The container around the URL input — remove extra spacing */
+div:has(> input[placeholder="Paste YouTube link here..."]) {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* Analyze button (primary) — right side of search */
+button[kind="primary"] {
+    background: #FF0000 !important;
+    border: 1px solid #FF0000 !important;
+    border-radius: 0 24px 24px 0 !important;
+    height: 48px !important;
+    padding: 0 28px !important;
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: none !important;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    letter-spacing: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button[kind="primary"]:hover {
+    background: #cc0000 !important;
+    border-color: #cc0000 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    letter-spacing: normal;
+}
+
+button[kind="primary"]:active {
+    transform: none !important;
+}
+
+button[kind="primary"]::before {
+    display: none !important;
+}
+
+/* Remove extra spacing on the column containing the analyze button */
+div:has(> button[kind="primary"]) {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Upload toggle button below search — YouTube secondary style */
+button[kind="secondary"] {
+    background: transparent !important;
+    border: none !important;
+    color: #3ea6ff !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 8px 16px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    border-radius: 20px !important;
+    transition: background 0.2s ease !important;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+button[kind="secondary"]:hover {
+    background: rgba(62, 166, 255, 0.1) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+button[kind="secondary"]::before {
+    display: none !important;
+}
+
+/* =====================================================
+   FILE UPLOAD AREA
+   ===================================================== */
+.upload-area {
+    max-width: 640px;
+    margin: 0 auto 40px;
+}
+
+[data-testid="stFileUploader"] {
+    background: transparent !important;
+    border: 2px dashed #303030 !important;
+    border-radius: 12px !important;
+    padding: 40px 20px !important;
+    text-align: center !important;
+    transition: border-color 0.2s ease;
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: #FF0000 !important;
+}
+
+[data-testid="stFileUploader"] span {
+    color: #aaaaaa !important;
+    font-size: 14px !important;
+}
+
+/* =====================================================
+   PROGRESS BAR
+   ===================================================== */
+.stProgress > div > div {
+    background: #0f0f0f !important;
+    height: 4px !important;
+    border-radius: 2px !important;
+}
+
+.stProgress > div > div > div > div {
+    background: #FF0000 !important;
+    border-radius: 2px !important;
+}
+
+/* =====================================================
+   RESULTS SECTION
+   ===================================================== */
+.results-header {
+    margin-top: 32px;
+    padding: 16px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.results-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.results-meta {
+    font-size: 13px;
+    color: #aaaaaa;
+}
+
+/* Video Info Card */
+.video-info-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.video-info-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.video-info-stat {
+    font-size: 13px;
+    color: #aaaaaa;
+}
+
+.video-info-stat strong {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* =====================================================
+   METRICS ROW
+   ===================================================== */
+.metrics-row {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.metric-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    flex: 1;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.metric-card:hover {
+    background: #222222;
+}
+
+.metric-card-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.metric-card-label {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin-top: 4px;
+}
+
+/* Override Streamlit metric styling */
+[data-testid="stMetric"] {
+    background: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px !important;
+    padding: 16px 20px !important;
+    backdrop-filter: none !important;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: #2a2a2a !important;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #aaaaaa !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* =====================================================
+   TABS — YouTube Style
+   ===================================================== */
+.stTabs {
+    margin-top: 24px;
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom: 1px solid #2a2a2a !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent !important;
+    border-radius: 0 !important;
+    color: #aaaaaa !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    padding: 12px 24px !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* Tab Content */
+.stTabs [data-baseweb="tab-panel"] {
+    padding: 24px 0 !important;
+}
+
+/* =====================================================
+   CONTENT CARDS
+   ===================================================== */
+.content-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+}
+
+.content-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.content-card p, .content-card div {
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Section heading inside content */
+.section-heading {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.stButton > button {
+    background: #272727 !important;
+    border: none !important;
+    border-radius: 24px !important;
+    padding: 8px 20px !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    color: #ffffff !important;
+    transition: background 0.2s ease !important;
+    box-shadow: none !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+.stButton > button:hover {
+    background: #333333 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.stButton > button:active {
+    transform: none !important;
+}
+
+.stButton > button::before {
+    display: none !important;
+}
+
+.stDownloadButton button {
+    background: #272727 !important;
+    border: 1px solid #303030 !important;
+    border-radius: 24px !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    padding: 8px 20px !important;
+    transition: background 0.2s ease !important;
+}
+
+.stDownloadButton button:hover {
+    background: #333333 !important;
+    border-color: #303030 !important;
+}
+
+/* =====================================================
+   INPUT FIELDS (non-search)
+   ===================================================== */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea {
+    background: #1a1a1a !important;
+    border: 1px solid #303030 !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+    border-color: #3ea6ff !important;
+    box-shadow: none !important;
+}
+
+.stTextInput > label,
+.stTextArea > label {
+    color: #aaaaaa !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+}
+
+/* =====================================================
+   CHAT
+   ===================================================== */
+[data-testid="stChatMessage"] {
+    background: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px !important;
+    padding: 16px 20px !important;
+    margin: 8px 0 !important;
+}
+
+[data-testid="stChatMessage"]:nth-child(odd) {
+    background: #1a1a1a !important;
+}
+
+[data-testid="stChatMessage"]:nth-child(even) {
+    background: #222222 !important;
+}
+
+[data-testid="stChatMessage"] p {
+    color: #dddddd !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+[data-testid="stChatMessage"] [data-testid="stAvatarImage"] {
+    background: #FF0000 !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+}
+
+.stChatInputContainer {
+    border: 1px solid #303030 !important;
+    border-radius: 24px !important;
+    background: #1a1a1a !important;
+}
+
+.stChatInputContainer input {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+.stChatInputContainer input::placeholder {
+    color: #717171 !important;
+}
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+[data-testid="stSidebar"] {
+    background: #0f0f0f !important;
+    border-right: 1px solid #2a2a2a !important;
+    backdrop-filter: none !important;
+}
+
+[data-testid="stSidebar"] .stButton > button {
+    width: 100%;
+    margin-bottom: 8px;
+    background: #272727 !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: #333333 !important;
+}
+
+/* Sidebar headings */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif;
+}
+
+[data-testid="stSidebar"] h1 {
+    font-size: 20px !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+[data-testid="stSidebar"] h2::after {
+    display: none !important;
+}
+
+/* Selectbox in sidebar */
+[data-testid="stSidebar"] .stSelectbox > div > div {
+    background: #1a1a1a !important;
+    border: 1px solid #303030 !important;
+    border-radius: 8px !important;
+}
+
+[data-testid="stSidebar"] .stSelectbox > div > div > div {
+    color: #ffffff !important;
+}
+
+/* Info box in sidebar */
+[data-testid="stSidebar"] [data-testid="stAlert"] {
+    background: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 8px !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stAlert"] p {
+    color: #cccccc !important;
+}
+
+/* =====================================================
+   DIVIDER
+   ===================================================== */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: #2a2a2a !important;
+    margin: 16px 0 !important;
+}
+
+/* =====================================================
+   HEADINGS (General)
+   ===================================================== */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 24px !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    margin-bottom: 8px !important;
+    text-shadow: none !important;
+}
+
+h2 {
+    font-size: 20px !important;
+    margin-bottom: 12px !important;
+}
+
+h2::after {
+    display: none !important;
+}
+
+h3 {
+    font-size: 16px !important;
+    color: #dddddd !important;
+}
+
+/* =====================================================
+   ALERTS / MESSAGES
+   ===================================================== */
+[data-testid="stAlert"] {
+    background: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px !important;
+    padding: 16px 20px !important;
+}
+
+[data-testid="stAlert"] p {
+    color: #dddddd !important;
+}
+
+.stSuccess {
+    background: rgba(255, 0, 0, 0.1) !important;
+    border-left: 3px solid #FF0000 !important;
+}
+
+.stInfo {
+    background: rgba(62, 166, 255, 0.1) !important;
+    border-left: 3px solid #3ea6ff !important;
+}
+
+.stWarning {
+    background: rgba(255, 255, 0, 0.1) !important;
+    border-left: 3px solid #ffd600 !important;
+}
+
+.stError {
+    background: rgba(255, 0, 0, 0.1) !important;
+    border-left: 3px solid #FF0000 !important;
+}
+
+/* =====================================================
+   LOADING SPINNER
+   ===================================================== */
+.stSpinner {
+    color: #FF0000 !important;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.footer {
+    text-align: center;
+    padding: 24px 0;
+    color: #717171;
+    font-size: 13px;
+    border-top: 1px solid #2a2a2a;
+    margin-top: 48px;
+}
+
+.footer a {
+    color: #3ea6ff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   SEARCH TRANSCRIPT INPUT
+   ===================================================== */
+div:has(> input[placeholder*="Search transcript"]) {
+    margin-bottom: 12px;
+}
+
+/* =====================================================
+   TWO-COLUMN INSIGHTS
+   ===================================================== */
+.insights-section {
+    margin-bottom: 20px;
+}
+
+.insights-section h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.insights-section ul, .insights-section ol {
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-left: 20px;
+}
+
+.insights-section li {
+    margin-bottom: 4px;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 768px) {
+    .yt-header {
+        padding: 0 12px;
+    }
+
+    .yt-logo-text {
+        font-size: 16px;
+    }
+
+    .yt-nav-link {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .welcome-section {
+        padding: 40px 16px 24px;
+    }
+
+    .welcome-title {
+        font-size: 24px;
+    }
+
+    .search-container .stTextInput input {
+        height: 40px !important;
+        font-size: 14px !important;
+    }
+
+    .search-container .stButton > button {
+        height: 40px !important;
+        padding: 0 16px !important;
+        font-size: 14px !important;
+    }
+
+    .metric-card-value {
+        font-size: 20px;
+    }
+}
+
+/* =====================================================
+   MISC OVERRIDES
+   ===================================================== */
+/* Remove extra padding from Streamlit containers */
+.block-container {
+    padding-top: 0 !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+/* Video thumbnail placeholder */
+.video-thumb-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #1a1a1a;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 48px;
+    margin-bottom: 16px;
+    border: 1px solid #2a2a2a;
+}
 
 /* Expander */
-
-.streamlit-expanderHeader{
-
-font-size:18px;
-
-font-weight:600;
-
+.streamlit-expanderHeader {
+    background: #1a1a1a !important;
+    border-radius: 8px !important;
+    border: 1px solid #2a2a2a !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
 
-
-/* Chat */
-
-[data-testid="stChatMessage"]{
-
-background:rgba(255,255,255,.05);
-
-border-radius:18px;
-
-padding:15px;
-
-border:1px solid rgba(255,255,255,.08);
-
-margin-bottom:10px;
-
+.streamlit-expanderContent {
+    background: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-top: none !important;
+    border-radius: 0 0 8px 8px !important;
 }
 
-
-/* Success */
-
-.stSuccess{
-
-background:rgba(16,185,129,.15);
-
-border-radius:15px;
-
+/* Override for stTextArea inside tabs */
+.stTextArea textarea {
+    background: #1a1a1a !important;
+    border: 1px solid #303030 !important;
+    border-radius: 8px !important;
+    color: #dddddd !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
 }
 
-
-/* Warning */
-
-.stWarning{
-
-border-radius:15px;
-
-}
-
-
-/* Info */
-
-.stInfo{
-
-border-radius:15px;
-
-}
-
-
-/* Spinner */
-
-.stSpinner{
-
-color:#00D4FF;
-
-}
-
-
-/* Scrollbar */
-
-::-webkit-scrollbar{
-
-width:10px;
-
-}
-
-::-webkit-scrollbar-track{
-
-background:#111827;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:#4F46E5;
-
-border-radius:20px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-background:#06B6D4;
-
-}
-
-
-/* Headings */
-
-h1{
-
-font-size:50px;
-
-font-weight:700;
-
-background:linear-gradient(
-
-90deg,
-
-#00D4FF,
-
-#7C3AED,
-
-#F472B6
-
-);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-}
-
-
-h2{
-
-color:#FFFFFF;
-
-font-weight:600;
-
-}
-
-
-h3{
-
-color:#D1D5DB;
-
-}
-
-
-/* Divider */
-
-hr{
-
-border:0;
-
-height:1px;
-
-background:rgba(255,255,255,.08);
-
-}
-
-
-/* Floating Animation */
-
-@keyframes float{
-
-0%{
-
-transform:translateY(0px);
-
-}
-
-50%{
-
-transform:translateY(-5px);
-
-}
-
-100%{
-
-transform:translateY(0px);
-
-}
-
-}
-
-
-img{
-
-animation:float 5s ease-in-out infinite;
-
-}
-
-
-/* Fade */
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(15px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0px);
-
-}
-
-}
-
-
-section.main>div{
-
-animation:fadeIn .7s;
-
-}
-
-
-/* Glow Text */
-
-.glow{
-
-text-shadow:
-
-0 0 10px cyan,
-
-0 0 20px cyan,
-
-0 0 30px blue;
-
-}
-
-
-/* Footer */
-
-.footer{
-
-text-align:center;
-
-padding:20px;
-
-color:#9CA3AF;
-
+/* Remove Streamlit's default spacing on column content */
+.row-widget.stHorizontal {
+    gap: 12px;
 }

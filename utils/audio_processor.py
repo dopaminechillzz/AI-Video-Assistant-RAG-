@@ -1,4 +1,5 @@
 import yt_dlp
+import uuid
 from pydub import AudioSegment
 import os
 
@@ -6,10 +7,12 @@ DOWNLOAD_DIR = "downloads"
 os.makedirs(DOWNLOAD_DIR,exist_ok = True)
 
 def download_youtube_audio(url :str) ->str:
-    output_path = os.path.join(DOWNLOAD_DIR, "%(title)s.%(ext)s")
+    random_filename = str(uuid.uuid4())
+    output_tmpl = os.path.join(DOWNLOAD_DIR, f"{random_filename}.%(ext)s")
+
     ydl_opts = {
         "format": "bestaudio/best",
-        "outtmpl": output_path,
+        "outtmpl": output_tmpl,
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
@@ -21,8 +24,9 @@ def download_youtube_audio(url :str) ->str:
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
-        filename = ydl.prepare_filename(info).replace(".webm", ".wav").replace(".m4a", ".wav")
-    return filename
+        # Construct the final .wav filename for returning
+        final_wav_filename = os.path.join(DOWNLOAD_DIR, f"{random_filename}.wav")
+    return final_wav_filename
 
 
 

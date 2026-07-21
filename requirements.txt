@@ -2,6 +2,9 @@ streamlit
 langchain
 langchain-community
 langchain-core
+langchain-mistralai
+langchain-chroma
+langchain-text-splitters
 langchain-huggingface
 chromadb
 sentence-transformers

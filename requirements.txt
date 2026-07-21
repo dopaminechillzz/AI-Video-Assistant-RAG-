@@ -9,7 +9,6 @@ huggingface-hub
 openai-whisper
 torch
 torchaudio
-pydub
 ffmpeg-python
 python-dotenv
 youtube-transcript-api

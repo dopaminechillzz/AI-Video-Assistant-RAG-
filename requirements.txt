@@ -15,6 +15,6 @@ torchaudio
 ffmpeg-python
 python-dotenv
 youtube-transcript-api
-yt-dlp
+yt-dlp>=2025.1.15
 pymupdf
 fpdf2

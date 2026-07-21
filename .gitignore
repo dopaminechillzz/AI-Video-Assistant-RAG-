@@ -22,6 +22,11 @@ downloads/
 vector_db/
 *.sqlite3
 
+# Social media drafts / misc docs
+linkedin_post*
+*social*
+*promotional*
+
 # Logs
 *.log
 

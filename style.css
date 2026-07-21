@@ -882,6 +882,29 @@ div:has(> input[placeholder*="Search transcript"]) {
     border: 1px solid #2a2a2a;
 }
 
+/* YouTube Thumbnail */
+.video-thumbnail {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+    background: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-thumbnail:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.video-thumbnail img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
 /* Expander */
 .streamlit-expanderHeader {
     background: #1a1a1a !important;

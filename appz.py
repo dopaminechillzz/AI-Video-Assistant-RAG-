@@ -1,5 +1,6 @@
 import time
 import tempfile
+import re
 
 import streamlit as st
 
@@ -8,6 +9,40 @@ import streamlit as st
 # -------------------------
 from main import run_pipeline
 from core.rag_engine import ask_question
+
+
+# =====================================================
+# YouTube Helpers
+# =====================================================
+def extract_youtube_id(url: str) -> str | None:
+    """Extract the video ID from a YouTube URL."""
+    patterns = [
+        r"(?:youtube\.com/watch\?.*v=)([\w-]{11})",
+        r"(?:youtu\.be/)([\w-]{11})",
+        r"(?:youtube\.com/embed/)([\w-]{11})",
+        r"(?:youtube\.com/shorts/)([\w-]{11})",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, url)
+        if match:
+            return match.group(1)
+    return None
+
+
+def get_thumbnail_html(video_id: str) -> str:
+    """Generate an HTML thumbnail with fallback to lower quality."""
+    maxres = f"https://img.youtube.com/vi/{video_id}/maxresdefault.jpg"
+    hq = f"https://img.youtube.com/vi/{video_id}/hqdefault.jpg"
+    return f"""
+    <div class="video-thumbnail">
+        <img
+            src="{maxres}"
+            onerror="this.onerror=null; this.src='{hq}';"
+            alt="Video thumbnail"
+            loading="lazy"
+        />
+    </div>
+    """
 
 # -------------------------
 # Page Config
@@ -226,37 +261,74 @@ if st.session_state.result:
         unsafe_allow_html=True,
     )
 
-    # Video Info Card
+    # ── Video Info + Thumbnail ──
     video_title = result.get("title", "Untitled Video")
-    st.markdown(
-        f"""
-        <div class="video-info-card">
-            <div class="video-info-title">🎬 {video_title}</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    is_youtube = bool(st.session_state.video_url)
+    video_id = extract_youtube_id(st.session_state.video_url) if is_youtube else None
 
-    # Metrics Row
-    m1, m2, m3 = st.columns(3)
+    if video_id:
+        # Two-column layout: info left, thumbnail right
+        info_col, thumb_col = st.columns([3, 2], gap="large")
 
-    with m1:
-        st.metric(
-            label="Action Items",
-            value=len(result["action_items"]) if isinstance(result["action_items"], list) else 1,
+        with info_col:
+            st.markdown(
+                f"""
+                <div class="video-info-card">
+                    <div class="video-info-title">🎬 {video_title}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+            # Metrics Row
+            m1, m2, m3 = st.columns(3)
+            with m1:
+                st.metric(
+                    label="Action Items",
+                    value=len(result["action_items"]) if isinstance(result["action_items"], list) else 1,
+                )
+            with m2:
+                st.metric(
+                    label="Key Decisions",
+                    value=len(result["key_decisions"]) if isinstance(result["key_decisions"], list) else 1,
+                )
+            with m3:
+                st.metric(
+                    label="Questions",
+                    value=len(result["open_questions"]) if isinstance(result["open_questions"], list) else 1,
+                )
+
+        with thumb_col:
+            st.markdown(get_thumbnail_html(video_id), unsafe_allow_html=True)
+
+    else:
+        # No thumbnail (file upload) — full width layout
+        st.markdown(
+            f"""
+            <div class="video-info-card">
+                <div class="video-info-title">🎬 {video_title}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
 
-    with m2:
-        st.metric(
-            label="Key Decisions",
-            value=len(result["key_decisions"]) if isinstance(result["key_decisions"], list) else 1,
-        )
-
-    with m3:
-        st.metric(
-            label="Questions",
-            value=len(result["open_questions"]) if isinstance(result["open_questions"], list) else 1,
-        )
+        # Metrics Row
+        m1, m2, m3 = st.columns(3)
+        with m1:
+            st.metric(
+                label="Action Items",
+                value=len(result["action_items"]) if isinstance(result["action_items"], list) else 1,
+            )
+        with m2:
+            st.metric(
+                label="Key Decisions",
+                value=len(result["key_decisions"]) if isinstance(result["key_decisions"], list) else 1,
+            )
+        with m3:
+            st.metric(
+                label="Questions",
+                value=len(result["open_questions"]) if isinstance(result["open_questions"], list) else 1,
+            )
 
     # Tabs
     tabs = st.tabs(["📝 Summary", "📄 Transcript", "📌 Insights", "💬 Chat"])
